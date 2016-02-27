@@ -10,3 +10,32 @@
 set relativenumber
 set ruler
 set nocompatible				
+
+"-------------------------------------
+"	    Vundle Config
+"-------------------------------------
+
+filetype off
+
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+Plugin 'VundleVim/Vundle.vim'
+
+"syntax hilighting packages
+Plugin 'https://github.com/sheerun/vim-polyglot'
+
+"allow for targeting sorrounding brackets, parens, tags, etc
+Plugin 'https://github.com/tpope/vim-surround' 
+
+call vundle#end()
+filetype plugin indent on
+
+"-------------------------------------
+"	    Basic Keymaps
+"-------------------------------------
+
+nmap 0 ^
+
+"turn on syntax hilighting
+syntax on
