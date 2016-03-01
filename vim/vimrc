@@ -35,7 +35,19 @@ filetype plugin indent on
 "	    Basic Keymaps
 "-------------------------------------
 
+"set the leader key to space
+let mapleader = " "
+
 nmap 0 ^
+
+"bind keys for changing the width of tabs between two and four
+nmap <leader>t :set expandtab tabstop=4 shiftwidth=4 softtabstop=4<CR>
+nmap <leader>m :set expandtab tabstop=2 shiftwidth=2 softtabstop=2<CR>
+
+"bind commonly mistyped keys
+nmap :E :e
+nmap :Q :q
+nmap :W :w
 
 "turn on syntax hilighting
 syntax on
