@@ -28,6 +28,12 @@ Plugin 'https://github.com/sheerun/vim-polyglot'
 "allow for targeting sorrounding brackets, parens, tags, etc
 Plugin 'https://github.com/tpope/vim-surround' 
 
+"cntrl-p fuzzy finding
+Plugin 'https://github.com/ctrlpvim/ctrlp.vim'
+
+" autoclose brackets parens etc...
+Plugin 'https://github.com/Townk/vim-autoclose'
+
 call vundle#end()
 filetype plugin indent on
 
@@ -51,3 +57,5 @@ nmap :W :w
 
 "turn on syntax hilighting
 syntax on
+
+" keybinds for setting up ctrl-p
