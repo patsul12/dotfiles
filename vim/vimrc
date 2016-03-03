@@ -34,6 +34,13 @@ Plugin 'https://github.com/ctrlpvim/ctrlp.vim'
 " autoclose brackets parens etc...
 Plugin 'https://github.com/Townk/vim-autoclose'
 
+" vim snippets for multiple languages
+Plugin 'SirVer/ultisnips'
+Plugin 'https://github.com/honza/vim-snippets'
+
+" tmux vim integration
+Plugin 'christoomey/vim-tmux-navigator'
+
 call vundle#end()
 filetype plugin indent on
 
@@ -55,7 +62,14 @@ nmap :E :e
 nmap :Q :q
 nmap :W :w
 
+" snippets keybindings
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
 "turn on syntax hilighting
 syntax on
 
-" keybinds for setting up ctrl-p
+"-------------------------------------
+"	    Visual Stuff
+"-------------------------------------
