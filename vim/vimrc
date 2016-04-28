@@ -7,14 +7,27 @@
 "	General Configuration	
 "-------------------------------------
 
+set nopaste
 set relativenumber
 set ruler
 set nocompatible				
+set expandtab
+set smarttab
+set shiftwidth=2
+set tabstop=2
+set softtabstop=2
+set hlsearch
+set complete=.,b,u,]
+set wildmenu
+set wildmode=longest,list,full
+set laststatus=2
+set encoding=utf-8
+
+colorscheme jellybeans
 
 "-------------------------------------
 "	    Vundle Config
 "-------------------------------------
-
 filetype off
 
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -27,6 +40,7 @@ Plugin 'https://github.com/sheerun/vim-polyglot'
 
 "allow for targeting sorrounding brackets, parens, tags, etc
 Plugin 'https://github.com/tpope/vim-surround' 
+Plugin 'tpope/vim-dispatch'
 
 "cntrl-p fuzzy finding
 Plugin 'https://github.com/ctrlpvim/ctrlp.vim'
@@ -41,6 +55,13 @@ Plugin 'https://github.com/honza/vim-snippets'
 " tmux vim integration
 Plugin 'christoomey/vim-tmux-navigator'
 
+" run specs with a single command
+Plugin 'thoughtbot/vim-rspec'
+
+" vim airlince bottom bar
+Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+
 call vundle#end()
 filetype plugin indent on
 
@@ -52,10 +73,6 @@ filetype plugin indent on
 let mapleader = " "
 
 nmap 0 ^
-
-"bind keys for changing the width of tabs between two and four
-nmap <leader>t :set expandtab tabstop=4 shiftwidth=4 softtabstop=4<CR>
-nmap <leader>m :set expandtab tabstop=2 shiftwidth=2 softtabstop=2<CR>
 
 "bind commonly mistyped keys
 nmap :E :e
@@ -70,6 +87,25 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 "turn on syntax hilighting
 syntax on
 
+" keymaps for running tests using thoughbot/vim-rspec
+nmap <leader>t :call RunCurrentSpecFile()<CR>
+nmap <leader>s :call RunNearestSpec()<CR>
+nmap <leader>l :call RunLastSpec()<CR>
+nmap <leader>a :call RunAllSpecs()<CR>
+
+imap <Tab> <C-P>
+
+let g:rspec_command = "Dispatch  bin/rspec {spec}"
+let g:rspec_command = "compiler rspec | set makeprg=zeus | Make rspec {spec}"
+
 "-------------------------------------
-"	    Visual Stuff
+"	          Visual Stuff
 "-------------------------------------
+
+let g:Powerline_symbols = 'fancy'
+let g:airline_powerline_fonts = 1
+let g:airline_theme='luna'
+
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
