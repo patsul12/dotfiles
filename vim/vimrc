@@ -23,8 +23,6 @@ set wildmode=longest,list,full
 set laststatus=2
 set encoding=utf-8
 
-colorscheme jellybeans
-
 "-------------------------------------
 "	    Vundle Config
 "-------------------------------------
@@ -61,6 +59,14 @@ Plugin 'thoughtbot/vim-rspec'
 " vim airlince bottom bar
 Plugin 'bling/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
+Plugin 'tpope/vim-fugitive'
+
+" gruvbox theme
+Plugin 'morhetz/gruvbox'
+
+" markdown highlighting
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
 
 call vundle#end()
 filetype plugin indent on
@@ -93,7 +99,16 @@ nmap <leader>s :call RunNearestSpec()<CR>
 nmap <leader>l :call RunLastSpec()<CR>
 nmap <leader>a :call RunAllSpecs()<CR>
 
-imap <Tab> <C-P>
+imap jj <Esc>
+function! Tab_Or_Complete()
+  if col('.')>1 && strpart( getline('.'), col('.')-2, 3 ) =~ '^\w'
+    return "\<C-N>"
+  else
+    return "\<Tab>"
+  endif
+endfunction
+inoremap <tab> <c-r>=Tab_Or_Complete()<CR>
+set dictionary="/usr/dict/words"
 
 let g:rspec_command = "Dispatch  bin/rspec {spec}"
 let g:rspec_command = "compiler rspec | set makeprg=zeus | Make rspec {spec}"
@@ -104,8 +119,12 @@ let g:rspec_command = "compiler rspec | set makeprg=zeus | Make rspec {spec}"
 
 let g:Powerline_symbols = 'fancy'
 let g:airline_powerline_fonts = 1
-let g:airline_theme='luna'
+let g:airline_theme='gruvbox'
 
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
+
+colorscheme gruvbox
+set background=dark
+
