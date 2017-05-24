@@ -68,6 +68,8 @@ Plugin 'morhetz/gruvbox'
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 
+Plugin 'vim-scripts/CF-Utils'
+
 call vundle#end()
 filetype plugin indent on
 
